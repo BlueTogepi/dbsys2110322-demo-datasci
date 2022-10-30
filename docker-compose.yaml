@@ -1,0 +1,16 @@
+version: "3.8"
+services:
+  mysql:
+    container_name: warehouse-mariadb
+    image: mariadb
+    ports:
+      - 3306:3306
+    environment:
+      MYSQL_ROOT_HOST: "%"
+      MYSQL_ROOT_PASSWORD: admin
+      MYSQL_DATABASE: warehouse
+      MYSQL_USER: user
+      MYSQL_PASSWORD: pass
+    volumes:
+      - ./db_volume:/var/lib/mysql
+      - ./db_dump:/docker-entrypoint-initdb.d
